@@ -46,6 +46,16 @@ masque 只有 mihomo 的 Alpha 分支才有，稳定版导进去会直接报错�
 [ClashMetaForAndroid](https://github.com/MetaCubeX/ClashMetaForAndroid/releases/tag/Prerelease-alpha)
 —— 认准 `Prerelease-alpha` 那个 tag，正式版不行。
 
+**iOS**
+
+[ClashMi](https://github.com/KaringX/clashmi) —— 内置 mihomo 内核，
+把 `warp-masque.yaml` 直接导进去就行。同一个 App 也有 macOS / Android /
+Windows / Linux 版本。
+
+Shadowrocket 也能用，但它不吃 yaml，要把 artifact 里的 `usque-config.json`
+转成 `masque://` 链接再导入。有人做了个纯前端的转换器：
+<https://github.com/KxK3lv1n/usque-shadowrocket-clashmi-converter>
+
 **跨平台，也可以看看**
 
 [FlClash](https://github.com/chen08209/FlClash) —— 界面比较新，Windows / macOS /
@@ -58,8 +68,7 @@ Linux / Android 都有。内核版本在设置里换。
 
 ### 这些用不了
 
-Stash、Shadowrocket、Surge、Quantumult X、Karing 都不是 mihomo 内核，
-导进去不认 masque。iOS 目前没有能用的，别折腾了。
+Surge、Quantumult X、Karing 不是 mihomo 内核，也不认 masque，导进去没用。
 
 ## 关于节点
 
@@ -127,10 +136,16 @@ uses: actions/upload-artifact@v6
 重新跑一次 workflow，会生成一套全新的密钥和配置。artifact 默认存 7 天，
 想留久一点在 Run workflow 的时候把保留天数改大。
 
-### iOS 能用吗
+### iOS 怎么用
 
-不能。目前没有能跑 mihomo 内核的 iOS 客户端，Shadowrocket、Stash、
-Quantumult X 都不行。知道有哪个可以的话欢迎开 issue 或者发 PR。
+用 [ClashMi](https://github.com/KaringX/clashmi)，它内置 mihomo 内核，
+`warp-masque.yaml` 直接导入就行，和桌面端一样。
+
+Shadowrocket 也支持 masque，但它不认 yaml，得把 artifact 里的
+`usque-config.json` 转成 `masque://` 链接。用这个在线转换器：
+<https://kxk3lv1n.github.io/usque-shadowrocket-clashmi-converter>
+
+Surge、Quantumult X、Karing 不行。
 
 ### 能选国家吗
 
